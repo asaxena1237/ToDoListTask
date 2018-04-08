@@ -4,5 +4,6 @@ module.exports = {
     YOUR_NAME: 'YOUR NAME',
     ADD_TODO:'Add Todo',
     ENTER_YOUR_ITEM:'Enter your Item',
-    ADD_ITEM:'+ ADD ITEM'
+    ADD_ITEM:'+ ADD ITEM',
+    
 };

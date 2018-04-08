@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, Image, TouchableOpacity } from 'react-native';
 import { Style } from '../modules/styles/AddToDoStyle';
+import { connect } from 'react-redux';
+import {onAddToDo} from './AddToDoAction';
 
 const GLOBAL_STRING = require('../constants/Strings')
-export default class AddTodo extends Component {
+class AddTodo extends Component {
     render() {
         return (
             <View style={Style.containerStyle}>
@@ -25,7 +27,9 @@ export default class AddTodo extends Component {
                         source={require('../assets/dummy_image.png')} />
                 </View>
 
-                <TouchableOpacity style={Style.buttonStyle}>
+                <TouchableOpacity style={Style.buttonStyle} onPress={()=>{
+                    {this.props.onAddToDo}
+                }}>
                     <Text>
                         {GLOBAL_STRING.ADD_ITEM}
                     </Text>
@@ -35,3 +39,9 @@ export default class AddTodo extends Component {
         )
     }
 }
+const mapStateToProps = (addToDoReducer) => {
+    const { task } = addToDoReducer;
+    return { task }
+
+}
+export default connect(mapStateToProps,{onAddToDo})(AddTodo);
