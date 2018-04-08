@@ -17,10 +17,10 @@ class Entername extends Component {
                     <TextInput
                         placeholder={GLOBAL_STRING.YOUR_NAME}
                         placeholderTextColor='#FF5733'
+                        onChangeText={this._enterName.bind(this)}
                     />
                     <TouchableOpacity onPress={() => {
-                        {this.props.enterName}
-                        this.props.navigation.navigate ('tabScreen')
+                        this.props.navigation.navigate('tabScreen')
                     }}>
                         <Image
                             style={Style.imageStyle}
@@ -29,6 +29,9 @@ class Entername extends Component {
                 </View>
             </View>
         )
+    }
+    _enterName = (text) => {
+        this.props.enterName(text)
     }
 }
 const mapStateToProps = ({ enterNameReducer }) => {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, TextInput, Image, TouchableOpacity } from 'react-native';
 import { Style } from '../modules/styles/AddToDoStyle';
 import { connect } from 'react-redux';
-import {onAddToDo} from './AddToDoAction';
+import { onAddToDo, clearText } from './AddToDoAction';
 
 const GLOBAL_STRING = require('../constants/Strings')
 class AddTodo extends Component {
@@ -13,23 +13,30 @@ class AddTodo extends Component {
                     <Text>
                         {GLOBAL_STRING.ADD_TODO}
                     </Text>
-                    <Image
-                        style={Style.logOutImageStyle}
-                        source={require('../assets/dummy_image.png')} />
+                    <TouchableOpacity onPress={()=>{
+                        this.props.navigation.navigate('enterName')
+                    }}>
+                        <Image
+                            style={Style.logOutImageStyle}
+                            source={require('../assets/dummy_image.png')} />
+                    </TouchableOpacity>
                 </View>
                 <View style={Style.textInputViewStyle}>
                     <TextInput
                         multiline
                         placeholderTextColor='black'
+                        onChangeText={this._enterTodo.bind(this)}
                         placeholder={GLOBAL_STRING.ENTER_YOUR_ITEM} />
-                    <Image
-                        style={Style.crossIconStyle}
-                        source={require('../assets/dummy_image.png')} />
+                    <TouchableOpacity onPress={() => {
+                        this.props.clearText
+                    }}>
+                        <Image
+                            style={Style.crossIconStyle}
+                            source={require('../assets/dummy_image.png')} />
+                    </TouchableOpacity>
                 </View>
 
-                <TouchableOpacity style={Style.buttonStyle} onPress={()=>{
-                    {this.props.onAddToDo}
-                }}>
+                <TouchableOpacity style={Style.buttonStyle}>
                     <Text>
                         {GLOBAL_STRING.ADD_ITEM}
                     </Text>
@@ -38,10 +45,14 @@ class AddTodo extends Component {
             </View>
         )
     }
+    _enterTodo = (text) => {
+        this.props.onAddToDo(text)
+    }
 }
+
 const mapStateToProps = (addToDoReducer) => {
     const { task } = addToDoReducer;
     return { task }
 
 }
-export default connect(mapStateToProps,{onAddToDo})(AddTodo);
+export default connect(mapStateToProps, { onAddToDo, clearText })(AddTodo);

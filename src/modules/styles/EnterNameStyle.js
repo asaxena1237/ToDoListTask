@@ -1,5 +1,4 @@
 import React from 'react'
-const GLOBAL_COLOR = require('../../constants/Colors')
 export const Style = {
     containerView: {
         alignItems: 'center',

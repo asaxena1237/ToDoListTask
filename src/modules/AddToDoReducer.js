@@ -10,6 +10,11 @@ export default (state = INITIAL_STATE, action) => {
                 ...state, task: action.payload
             }
         }
+        case CLEAR_TODO_TEXT: {
+            return {
+                ...state, task: ''
+            }
+        }
         default:
             return state;
     }

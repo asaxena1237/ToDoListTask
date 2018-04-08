@@ -19,23 +19,29 @@ export const Style = {
 
     textInputViewStyle: {
         marginTop: 50,
-        justifyContent:'space-between',
-        alignItems:'center',
-        flexDirection:'row',
-        paddingLeft:20
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexDirection: 'row',
+        paddingLeft: 20
     },
     crossIconStyle: {
         height: 20,
         width: 20,
-        marginRight:20
-        
+        marginRight: 20
+
     },
-    buttonStyle:{
-        width:100,
-        borderRadius:20,
-        backgroundColor:'#09BCF7',
+    buttonStyle: {
+        width: 100,
+        borderRadius: 20,
+        backgroundColor: '#09BCF7',
+        padding: 5,
+        alignSelf: 'center',
+        marginTop: 30
+    },
+   
+    todoLabel: {
+        backgroundColor: '#E9E6E5',
         padding:5,
-        alignSelf:'center',
         marginTop:30
     }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View ,Image} from 'react-native';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { Style } from '../modules/styles/AddToDoStyle';
 
 const GLOBAL_STRING = require('../constants/Strings')
@@ -11,10 +11,18 @@ export default class ListScreen extends Component {
                     <Text>
                         {GLOBAL_STRING.ADD_TODO}
                     </Text>
-                    <Image
-                        style={Style.logOutImageStyle}
-                        source={require('../assets/dummy_image.png')} />
+                    <TouchableOpacity onPress={() => {
+                        this.props.navigation.navigate('enterName')
+                    }}>
+                        <Image
+                            style={Style.logOutImageStyle}
+                            source={require('../assets/dummy_image.png')} />
+                    </TouchableOpacity>
                 </View>
+                
+                <Text style={Style.todoLabel}>
+                    {GLOBAL_STRING.TODO}
+                </Text>
             </View>
         )
     }

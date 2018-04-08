@@ -27,8 +27,6 @@ const AppNavigator = StackNavigator({
             header: null
         }
     },
-
-
 });
 
 const store = configureStore();
